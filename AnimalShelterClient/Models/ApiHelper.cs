@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 
-namespace MessageBoardClient.Models
+namespace AnimalShelterClient.Models
 {
   public class ApiHelper
   {
