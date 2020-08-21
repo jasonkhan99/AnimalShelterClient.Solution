@@ -51,10 +51,6 @@ namespace AnimalShelterClient
 
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
-            app.UseDeveloperExceptionPage();
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

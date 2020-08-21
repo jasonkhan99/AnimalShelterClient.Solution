@@ -13,14 +13,9 @@ namespace AnimalShelterClient.Models
     public int Age { get; set; }
     public string Gender { get; set; }
 
-    public Animal()
-    {
-    }
-
     public static List<Animal> GetAnimals()
     {
-      string requestAddress = "Animals";
-      var apiCallTask = ApiHelper.GetAll(requestAddress);
+      var apiCallTask = ApiHelper.GetAll();
       var result = apiCallTask.Result;
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
@@ -31,8 +26,7 @@ namespace AnimalShelterClient.Models
 
     public static Animal GetDetails(int id)
     {
-      string requestAddress = $"Animals/{id}";
-      var apiCallTask = ApiHelper.Get(requestAddress);
+      var apiCallTask = ApiHelper.Get(id);
       var result = apiCallTask.Result;
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
@@ -43,23 +37,19 @@ namespace AnimalShelterClient.Models
 
     public static void Post(Animal animal)
     {
-      string requestAddress = $"Animals";
       string jsonAnimal = JsonConvert.SerializeObject(animal);
-      var apiCallTask = ApiHelper.Post(requestAddress, jsonAnimal);
+      var apiCallTask = ApiHelper.Post(jsonAnimal);
     }
 
     public static void Put(Animal animal)
     {
-      string requestAddress = $"Animals/{animal.AnimalId}";
       string jsonAnimal = JsonConvert.SerializeObject(animal);
-      var apiCallTask = ApiHelper.Put(requestAddress, jsonAnimal);
+      var apiCallTask = ApiHelper.Put(animal.AnimalId, jsonAnimal);
     }
 
     public static void Delete(int id)
     {
-      string requestAddress = $"Animals/{id}";
-      var apiCallTask = ApiHelper.Delete(requestAddress);
+      var apiCallTask = ApiHelper.Delete(id);
     }
-    
   }
 }
